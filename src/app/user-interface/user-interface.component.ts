@@ -20,7 +20,7 @@ export class UserInterfaceComponent implements AfterViewInit {
   }
 
   onUserChoiceInputChange() {
-    console.log('User input changed to: ', this.userChoiceInput);
+    // console.log('User input changed to: ', this.userChoiceInput);
     // switch(this.userChoiceInput) {
     //   case ('1'): {
         
@@ -28,5 +28,7 @@ export class UserInterfaceComponent implements AfterViewInit {
     // }
   }
 
-  onAddTransactionInputChange() {}
+  getTransactionValue() {
+    console.log('User input changed to: ', this.addTransactionInput);
+  }
 }
