@@ -13,7 +13,6 @@ export class UserInterfaceComponent implements AfterViewInit {
   userChoiceInput?: string;
   addTransactionInput?: number;
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
-  @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
 
   ngAfterViewInit() {
     this.userChoiceInputField.nativeElement.focus();
