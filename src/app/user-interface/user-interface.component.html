@@ -1,9 +1,25 @@
 <h1>Angular Blockchain</h1>
-<form id="userChoice">
+<form id="userChoiceForm">
   <h2>Please choose</h2>
   <p>1: Add a new transaction value</p>
   <p>2: Output the blockchain blocks</p>
   <p>h: Manipulate the chain</p>
   <p>q: Quit</p>
-  <input type="text" [(ngModel)]="userChoiceInput" name="userChoiceInput" (ngModelChange)="onUserChoiceInputChange()" #userChoiceInputField>
+  <input
+    type="text"
+    [(ngModel)]="userChoiceInput"
+    name="userChoiceInput"
+    (ngModelChange)="onUserChoiceInputChange()"
+    #userChoiceInputField
+  />
+</form>
+<form id="addTransactionForm">
+  <h2>Your transaction amount please:</h2>
+  <input
+    type="number"
+    [(ngModel)]="addTransactionInput"
+    name="addTransactionInput"
+    (ngModelChange)="onAddTransactionInputChange()"
+    #addTransactionInputField
+  />
 </form>

@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './user-interface.component.html',
-  styleUrl: './user-interface.component.scss'
+  styleUrl: './user-interface.component.scss',
 })
 export class UserInterfaceComponent implements AfterViewInit {
-  userChoiceInput?: number;
+  userChoiceInput?: string;
+  addTransactionInput?: number;
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
 
   ngAfterViewInit() {
@@ -17,6 +18,8 @@ export class UserInterfaceComponent implements AfterViewInit {
   }
 
   onUserChoiceInputChange() {
-    console.log("User input changed to: ", this.userChoiceInput);
+    console.log('User input changed to: ', this.userChoiceInput);
   }
+
+  onAddTransactionInputChange() {}
 }
