@@ -5,5 +5,5 @@
   <p>2: Output the blockchain blocks</p>
   <p>h: Manipulate the chain</p>
   <p>q: Quit</p>
-  <input type="number">
+  <input type="text" [(ngModel)]="userInput" name="userInput" (ngModelChange)="onInputChange()" #inputField>
 </form>
