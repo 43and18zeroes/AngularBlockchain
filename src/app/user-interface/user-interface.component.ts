@@ -1,10 +1,11 @@
+import { CommonModule, NgSwitch } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-interface',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule, NgSwitch],
   templateUrl: './user-interface.component.html',
   styleUrl: './user-interface.component.scss',
 })
