@@ -9,14 +9,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-interface.component.scss'
 })
 export class UserInterfaceComponent implements AfterViewInit {
-  userInput?: number;
-  @ViewChild('inputField') inputField!: ElementRef;
+  userChoiceInput?: number;
+  @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
 
   ngAfterViewInit() {
-    this.inputField.nativeElement.focus();
+    this.userChoiceInputField.nativeElement.focus();
   }
 
-  onInputChange() {
-    console.log("User input changed to: ", this.userInput);
+  onUserChoiceInputChange() {
+    console.log("User input changed to: ", this.userChoiceInput);
   }
 }
