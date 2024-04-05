@@ -14,7 +14,7 @@
       #userChoiceInputField
     />
   </form>
-  <form *ngSwitchCase="'1'" id="addTransactionForm" (ngSubmit)="getTransactionValue()">
+  <form *ngSwitchCase="'1'" id="addTransactionForm" (ngSubmit)="addTransaction()">
     <h2>Your transaction amount please:</h2>
     <input
       type="number"
