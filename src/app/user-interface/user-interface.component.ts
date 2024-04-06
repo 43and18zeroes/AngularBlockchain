@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-interface.component.scss',
 })
 export class UserInterfaceComponent implements AfterViewInit {
-  blockchain: number[] = [];
+  blockchain: (number | number[])[] = [];
   userChoiceInput?: string;
   addTransactionInput!: number;
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
@@ -29,9 +29,9 @@ export class UserInterfaceComponent implements AfterViewInit {
 
   addTransaction() {
     console.log('User input changed to: ', this.addTransactionInput);
-    // if (this.blockchain.length < 1) {
-
-    // }
+    if (this.blockchain.length < 1) {
+      this.blockchain.push([1]);
+    }
     this.blockchain.push(this.addTransactionInput);
     console.log('this.blockchain', this.blockchain);
   }
