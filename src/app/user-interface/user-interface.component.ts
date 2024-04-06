@@ -29,9 +29,7 @@ export class UserInterfaceComponent implements AfterViewInit {
 
   addTransaction() {
     console.log('User input changed to: ', this.addTransactionInput);
-    if (this.blockchain.length < 1) {
-      this.blockchain.push([1]);
-    }
+    if (this.blockchain.length < 1) this.blockchain.push([1]);
     this.blockchain.push(this.addTransactionInput);
     console.log('this.blockchain', this.blockchain);
     this.userChoiceInput = ''; // switches back to *ngSwitchDefault
