@@ -14,17 +14,20 @@ export class UserInterfaceComponent implements AfterViewInit {
   userChoiceInput?: string;
   addTransactionInput!: number;
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
+  @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
 
   ngAfterViewInit() {
     this.userChoiceInputField.nativeElement.focus();
   }
 
   onUserChoiceInputChange() {
-    // console.log('User input changed to: ', this.userChoiceInput);
-    // switch(this.userChoiceInput) {
-    //   case ('1'): {
-    //   }
-    // }
+    this.setFocusToAddTransactionInputField();
+  }
+
+  setFocusToAddTransactionInputField() {
+    setTimeout(() => {
+      this.addTransactionInputField.nativeElement.focus();
+    });
   }
 
   addTransaction() {
