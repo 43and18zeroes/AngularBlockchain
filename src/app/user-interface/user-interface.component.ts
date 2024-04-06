@@ -26,7 +26,8 @@ export class UserInterfaceComponent implements AfterViewInit {
 
   setFocusToAddTransactionInputField() {
     setTimeout(() => {
-      if (this.addTransactionInputField) this.addTransactionInputField.nativeElement.focus();
+      if (this.addTransactionInputField)
+        this.addTransactionInputField.nativeElement.focus();
     });
   }
 
@@ -49,6 +50,15 @@ export class UserInterfaceComponent implements AfterViewInit {
   setFocusToUserChoiceInputField() {
     setTimeout(() => {
       this.userChoiceInputField.nativeElement.focus();
+    });
+  }
+
+  outputBlockchain() {
+    const self = this;
+    document.addEventListener('keyup', function onKeyPress(event) {
+      if (event.key === 'Escape') {
+        self.backToMainMenu();
+      }
     });
   }
 
