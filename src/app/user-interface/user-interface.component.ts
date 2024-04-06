@@ -35,5 +35,13 @@ export class UserInterfaceComponent implements AfterViewInit {
     this.blockchain.push(this.addTransactionInput);
     console.log('this.blockchain', this.blockchain);
     this.userChoiceInput = ''; // switches back to *ngSwitchDefault
+
+    this.setFocusToUserChoiceInputField();
+  }
+
+  setFocusToUserChoiceInputField() {
+    setTimeout(() => {
+      this.userChoiceInputField.nativeElement.focus();
+    });
   }
 }
