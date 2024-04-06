@@ -26,7 +26,7 @@ export class UserInterfaceComponent implements AfterViewInit {
 
   setFocusToAddTransactionInputField() {
     setTimeout(() => {
-      this.addTransactionInputField.nativeElement.focus();
+      if (this.addTransactionInputField) this.addTransactionInputField.nativeElement.focus();
     });
   }
 
