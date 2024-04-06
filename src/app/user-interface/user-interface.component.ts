@@ -51,4 +51,9 @@ export class UserInterfaceComponent implements AfterViewInit {
       this.userChoiceInputField.nativeElement.focus();
     });
   }
+
+  backToMainMenu() {
+    this.userChoiceInput = ''; // Schaltet zurück zu *ngSwitchDefault
+    this.setFocusToUserChoiceInputField();
+  }
 }
