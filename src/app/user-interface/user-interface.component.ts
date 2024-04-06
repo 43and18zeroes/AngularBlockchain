@@ -13,6 +13,9 @@ export class UserInterfaceComponent implements AfterViewInit {
   blockchain: any = [];
   userChoiceInput?: string;
   addTransactionInput!: number | '';
+  transactionError = false;
+  transactionErrorMessage = '';
+
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
 
@@ -39,6 +42,14 @@ export class UserInterfaceComponent implements AfterViewInit {
   }
 
   addTransaction() {
+    if (!this.validateTransactionInput(this.addTransactionInput)) {
+      this.transactionError = true;
+      this.transactionErrorMessage = 'Invalid transaction input. Please enter a number greater than 0.';
+      // Stellen Sie sicher, dass der Fokus für eine bessere Benutzerfreundlichkeit zurück zum Eingabefeld gesetzt wird.
+      this.addTransactionInputField.nativeElement.focus();
+      return;
+    }
+    this.transactionError = false;
     console.log('User input changed to: ', this.addTransactionInput);
     const lastBlockchainValue = this.getLastBlockchainValue();
     this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
@@ -47,6 +58,11 @@ export class UserInterfaceComponent implements AfterViewInit {
     this.userChoiceInput = ''; // switches back to *ngSwitchDefault
 
     this.setFocusToUserChoiceInputField();
+  }
+
+  validateTransactionInput(input: number | ''): boolean {
+    // Einfache Validierung: prüft, ob die Eingabe eine Zahl und größer als 0 ist
+    return typeof input === 'number' && input > 0;
   }
 
   getLastBlockchainValue() {

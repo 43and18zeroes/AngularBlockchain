@@ -14,20 +14,27 @@
       #userChoiceInputField
     />
   </form>
-  <form *ngSwitchCase="'1'" id="addTransactionForm" (ngSubmit)="addTransaction()">
+  <form
+    *ngSwitchCase="'1'"
+    id="addTransactionForm"
+    (ngSubmit)="addTransaction()"
+  >
     <h2>Your transaction amount please:</h2>
     <input
       type="number"
       [(ngModel)]="addTransactionInput"
       name="addTransactionInput"
       #addTransactionInputField
+      [class.is-invalid]="transactionError"
     />
+    
     <button>Submit</button>
+    <div *ngIf="transactionError" class="error__message">{{transactionErrorMessage}}</div>
   </form>
   <div *ngSwitchCase="'2'">
     <div *ngFor="let block of blockchain; let i = index">
-      <h3>Outputting Block {{i + 1}}</h3>
-      <p>{{block | json}}</p>
+      <h3>Outputting Block {{ i + 1 }}</h3>
+      <p>{{ block | json }}</p>
     </div>
     <button (click)="backToMainMenu()">Back to Main Menu (Esc)</button>
   </div>
