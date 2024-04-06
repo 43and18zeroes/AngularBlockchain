@@ -25,7 +25,6 @@
     <button>Submit</button>
   </form>
   <div *ngSwitchCase="'2'">
-    <ng-container *ngIf="outputBlockchain(); false"></ng-container>
     <div *ngFor="let block of blockchain; let i = index">
       <h3>Outputting Block {{i + 1}}</h3>
       <p>{{block | json}}</p>

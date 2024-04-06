@@ -1,5 +1,5 @@
 import { CommonModule, NgSwitch } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,13 @@ export class UserInterfaceComponent implements AfterViewInit {
   addTransactionInput!: number | '';
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
+
+  @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.backToMainMenu();
+    }
+  }
 
   ngAfterViewInit() {
     this.userChoiceInputField.nativeElement.focus();
@@ -50,15 +57,6 @@ export class UserInterfaceComponent implements AfterViewInit {
   setFocusToUserChoiceInputField() {
     setTimeout(() => {
       this.userChoiceInputField.nativeElement.focus();
-    });
-  }
-
-  outputBlockchain() {
-    const self = this;
-    document.addEventListener('keyup', function onKeyPress(event) {
-      if (event.key === 'Escape') {
-        self.backToMainMenu();
-      }
     });
   }
 
