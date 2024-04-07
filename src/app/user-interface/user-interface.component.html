@@ -13,6 +13,7 @@
       (ngModelChange)="onUserChoiceInputChange()"
       #userChoiceInputField
     />
+    <div *ngIf="userChoiceError" class="error__message">{{userChoiceErrorMessage}}</div>
   </form>
   <form
     *ngSwitchCase="'1'"

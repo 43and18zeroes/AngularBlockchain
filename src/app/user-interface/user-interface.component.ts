@@ -20,8 +20,10 @@ export class UserInterfaceComponent implements AfterViewInit {
   userChoiceInput?: string;
   validUserChoiceInputs = ['1', '2', 'h', 'q']
   addTransactionInput!: number | '';
+  userChoiceError = false;
+  userChoiceErrorMessage = 'Invalid input. Please enter 1, 2, h, or q.';
   transactionError = false;
-  transactionErrorMessage = '';
+  transactionErrorMessage = 'Invalid transaction input. Please enter a number greater than 0.';
 
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
@@ -39,8 +41,10 @@ export class UserInterfaceComponent implements AfterViewInit {
 
   onUserChoiceInputChange() {
     if (!this.validUserChoiceInputs.includes(this.userChoiceInput!)) {
+      this.userChoiceError = true;
       this.userChoiceInputField.nativeElement.value = '';
     } else {
+      this.userChoiceError = false;
       this.setFocusToAddTransactionInputField();
     }
   }
@@ -55,9 +59,6 @@ export class UserInterfaceComponent implements AfterViewInit {
   addTransaction() {
     if (!this.validateTransactionInput(this.addTransactionInput)) {
       this.transactionError = true;
-      this.transactionErrorMessage =
-        'Invalid transaction input. Please enter a number greater than 0.';
-      // Stellen Sie sicher, dass der Fokus für eine bessere Benutzerfreundlichkeit zurück zum Eingabefeld gesetzt wird.
       this.addTransactionInputField.nativeElement.focus();
       return;
     }
@@ -68,12 +69,10 @@ export class UserInterfaceComponent implements AfterViewInit {
     console.log('this.blockchain', this.blockchain);
     this.addTransactionInput = '';
     this.userChoiceInput = ''; // switches back to *ngSwitchDefault
-
     this.setFocusToUserChoiceInputField();
   }
 
   validateTransactionInput(input: number | ''): boolean {
-    // Einfache Validierung: prüft, ob die Eingabe eine Zahl und größer als 0 ist
     return typeof input === 'number' && input > 0;
   }
 
