@@ -1,5 +1,11 @@
 import { CommonModule, NgSwitch } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  ViewChild,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -12,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 export class UserInterfaceComponent implements AfterViewInit {
   blockchain: any = [];
   userChoiceInput?: string;
+  validUserChoiceInputs = ['1', '2', 'h', 'q']
   addTransactionInput!: number | '';
   transactionError = false;
   transactionErrorMessage = '';
@@ -31,7 +38,11 @@ export class UserInterfaceComponent implements AfterViewInit {
   }
 
   onUserChoiceInputChange() {
-    this.setFocusToAddTransactionInputField();
+    if (!this.validUserChoiceInputs.includes(this.userChoiceInput!)) {
+      this.userChoiceInputField.nativeElement.value = '';
+    } else {
+      this.setFocusToAddTransactionInputField();
+    }
   }
 
   setFocusToAddTransactionInputField() {
@@ -44,7 +55,8 @@ export class UserInterfaceComponent implements AfterViewInit {
   addTransaction() {
     if (!this.validateTransactionInput(this.addTransactionInput)) {
       this.transactionError = true;
-      this.transactionErrorMessage = 'Invalid transaction input. Please enter a number greater than 0.';
+      this.transactionErrorMessage =
+        'Invalid transaction input. Please enter a number greater than 0.';
       // Stellen Sie sicher, dass der Fokus für eine bessere Benutzerfreundlichkeit zurück zum Eingabefeld gesetzt wird.
       this.addTransactionInputField.nativeElement.focus();
       return;
