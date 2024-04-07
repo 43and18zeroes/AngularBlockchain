@@ -25,6 +25,7 @@
       type="number"
       [(ngModel)]="addTransactionInput"
       name="addTransactionInput"
+      (ngModelChange)="onAddTransactionInputChange()"
       #addTransactionInputField
       [class.is-invalid]="transactionError"
     />

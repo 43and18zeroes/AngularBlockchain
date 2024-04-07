@@ -56,14 +56,17 @@ export class UserInterfaceComponent implements AfterViewInit {
     });
   }
 
-  addTransaction() {
+  onAddTransactionInputChange() {
     if (!this.validateTransactionInput(this.addTransactionInput)) {
       this.transactionError = true;
       this.addTransactionInputField.nativeElement.focus();
-      return;
+      // return;
+    } else {
+      this.transactionError = false;
     }
-    this.transactionError = false;
-    console.log('User input changed to: ', this.addTransactionInput);
+  }
+
+  addTransaction() {
     const lastBlockchainValue = this.getLastBlockchainValue();
     this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
     console.log('this.blockchain', this.blockchain);
