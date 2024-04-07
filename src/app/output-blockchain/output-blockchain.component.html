@@ -1,0 +1,7 @@
+<div>
+  <div *ngFor="let block of blockchain; let i = index">
+    <h3>Outputting Block {{ i + 1 }}</h3>
+    <p>{{ block | json }}</p>
+  </div>
+  <button (click)="backToMainMenu()">Back to Main Menu (Esc)</button>
+</div>

@@ -1,0 +1,15 @@
+<form id="addTransactionForm" (ngSubmit)="addTransaction()">
+  <h2>Your transaction amount please:</h2>
+  <input
+    type="number"
+    [(ngModel)]="addTransactionInput"
+    name="addTransactionInput"
+    (ngModelChange)="onAddTransactionInputChange()"
+    #addTransactionInputField
+    [class.is-invalid]="transactionError"
+  />
+  <button [disabled]="!transactionInputValid">Submit</button>
+  <div *ngIf="transactionError" class="error__message">
+    {{ transactionErrorMessage }}
+  </div>
+</form>
