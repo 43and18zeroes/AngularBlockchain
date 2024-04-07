@@ -68,8 +68,7 @@ export class UserInterfaceComponent implements AfterViewInit {
     this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
     console.log('this.blockchain', this.blockchain);
     this.addTransactionInput = '';
-    this.userChoiceInput = ''; // switches back to *ngSwitchDefault
-    this.setFocusToUserChoiceInputField();
+    this.backToMainMenu();
   }
 
   validateTransactionInput(input: number | ''): boolean {
