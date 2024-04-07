@@ -13,8 +13,11 @@
       (ngModelChange)="onUserChoiceInputChange()"
       #userChoiceInputField
     />
-    <div *ngIf="userChoiceError" class="error__message">{{userChoiceErrorMessage}}</div>
+    <div *ngIf="userChoiceError" class="error__message">
+      {{ userChoiceErrorMessage }}
+    </div>
   </form>
+
   <form
     *ngSwitchCase="'1'"
     id="addTransactionForm"
@@ -29,10 +32,12 @@
       #addTransactionInputField
       [class.is-invalid]="transactionError"
     />
-    
-    <button>Submit</button>
-    <div *ngIf="transactionError" class="error__message">{{transactionErrorMessage}}</div>
+    <button [disabled]="!transactionInputValid">Submit</button>
+    <div *ngIf="transactionError" class="error__message">
+      {{ transactionErrorMessage }}
+    </div>
   </form>
+
   <div *ngSwitchCase="'2'">
     <div *ngFor="let block of blockchain; let i = index">
       <h3>Outputting Block {{ i + 1 }}</h3>

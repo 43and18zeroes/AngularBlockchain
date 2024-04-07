@@ -24,6 +24,7 @@ export class UserInterfaceComponent implements AfterViewInit {
   userChoiceErrorMessage = 'Invalid input. Please enter 1, 2, h, or q.';
   transactionError = false;
   transactionErrorMessage = 'Invalid transaction input. Please enter a number greater than 0.';
+  transactionInputValid = false;
 
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
@@ -59,10 +60,13 @@ export class UserInterfaceComponent implements AfterViewInit {
   onAddTransactionInputChange() {
     if (!this.validateTransactionInput(this.addTransactionInput)) {
       this.transactionError = true;
+      this.transactionInputValid = false;
+      console.log(this.transactionError);
       this.addTransactionInputField.nativeElement.focus();
       // return;
     } else {
       this.transactionError = false;
+      this.transactionInputValid = true;
     }
   }
 
@@ -71,6 +75,7 @@ export class UserInterfaceComponent implements AfterViewInit {
     this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
     console.log('this.blockchain', this.blockchain);
     this.addTransactionInput = '';
+    this.transactionInputValid = false;
     this.backToMainMenu();
   }
 
