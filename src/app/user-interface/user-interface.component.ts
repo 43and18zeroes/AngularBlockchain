@@ -18,12 +18,13 @@ import { FormsModule } from '@angular/forms';
 export class UserInterfaceComponent implements AfterViewInit {
   blockchain: any = [];
   userChoiceInput?: string;
-  validUserChoiceInputs = ['1', '2', 'h', 'q']
+  validUserChoiceInputs = ['1', '2', 'h', 'q'];
   addTransactionInput!: number | '';
   userChoiceError = false;
   userChoiceErrorMessage = 'Invalid input. Please enter 1, 2, h, or q.';
   transactionError = false;
-  transactionErrorMessage = 'Invalid transaction input. Please enter a number greater than 0.';
+  transactionErrorMessage =
+    'Invalid transaction input. Please enter a number greater than 0.';
   transactionInputValid = false;
 
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
