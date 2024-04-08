@@ -27,4 +27,8 @@ import { OutputBlockchainComponent } from './output-blockchain/output-blockchain
 })
 export class UserInterfaceComponent {
   userChoiceInput: string = '';
+
+  onUserChoiceChanged(userChoice: string) {
+    this.userChoiceInput = userChoice;
+  }
 }

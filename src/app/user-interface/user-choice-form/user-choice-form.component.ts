@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,8 @@ export class UserChoiceFormComponent implements AfterViewInit {
   userChoiceErrorMessage = 'Invalid input. Please enter 1, 2, h, or q.';
   validUserChoiceInputs = ['1', '2', 'h', 'q'];
 
+  @Output() userChoiceChange = new EventEmitter<string>();
+
   ngAfterViewInit() {
     this.userChoiceInputField.nativeElement.focus();
   }
@@ -26,6 +28,7 @@ export class UserChoiceFormComponent implements AfterViewInit {
       this.userChoiceInputField.nativeElement.value = '';
     } else {
       this.userChoiceError = false;
+      this.userChoiceChange.emit(this.userChoiceInput);
       // this.setFocusToAddTransactionInputField();
     }
   }
