@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlockchainDataService } from '../services/blockchain-data.service';
 
@@ -65,6 +65,14 @@ export class AddTransactionFormComponent {
       if (this.addTransactionInputField)
         this.addTransactionInputField.nativeElement.focus();
     });
+  }
+
+  @HostListener('document:keyup', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      // this.backToMainMenu();
+      this.userChoiceChange.emit('');
+    }
   }
 
   // backToMainMenu() {

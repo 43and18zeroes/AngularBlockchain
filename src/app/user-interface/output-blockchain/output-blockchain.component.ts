@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { BlockchainDataService } from '../services/blockchain-data.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { BlockchainDataService } from '../services/blockchain-data.service';
 })
 export class OutputBlockchainComponent {
   blockchain: any = [];
+  @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {
     
@@ -24,6 +25,7 @@ export class OutputBlockchainComponent {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       // this.backToMainMenu();
+      this.userChoiceChange.emit('');
     }
   }
   

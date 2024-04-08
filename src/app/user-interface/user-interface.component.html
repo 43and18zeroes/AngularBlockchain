@@ -2,5 +2,5 @@
 <div [ngSwitch]="userChoiceInput">
   <app-user-choice-form  *ngSwitchDefault (userChoiceChange)="onUserChoiceChanged($event)"></app-user-choice-form>
   <app-add-transaction-form *ngSwitchCase="'1'" (userChoiceChange)="onUserChoiceChanged($event)"></app-add-transaction-form>
-  <app-output-blockchain *ngSwitchCase="'2'"></app-output-blockchain>
+  <app-output-blockchain *ngSwitchCase="'2'" (userChoiceChange)="onUserChoiceChanged($event)"></app-output-blockchain>
 </div>
