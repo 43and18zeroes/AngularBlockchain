@@ -26,20 +26,25 @@ export class UserChoiceFormComponent implements AfterViewInit {
       this.userChoiceInputField.nativeElement.value = '';
     } else {
       this.userChoiceError = false;
-      this.setFocusToAddTransactionInputField();
+      // this.setFocusToAddTransactionInputField();
     }
   }
 
-  setFocusToAddTransactionInputField() {
-    setTimeout(() => {
-      if (this.addTransactionInputField)
-        this.addTransactionInputField.nativeElement.focus();
-    });
-  }
+  // setFocusToAddTransactionInputField() {
+  //   setTimeout(() => {
+  //     if (this.addTransactionInputField)
+  //       this.addTransactionInputField.nativeElement.focus();
+  //   });
+  // }
 
   setFocusToUserChoiceInputField() {
     setTimeout(() => {
       this.userChoiceInputField.nativeElement.focus();
     });
+  }
+
+  backToMainMenu() {
+    this.userChoiceInput = ''; // Schaltet zurück zu *ngSwitchDefault
+    this.setFocusToUserChoiceInputField();
   }
 }

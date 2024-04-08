@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BlockchainDataService } from '../services/blockchain-data.service';
 
 @Component({
   selector: 'app-add-transaction-form',
@@ -10,12 +11,21 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './add-transaction-form.component.scss',
 })
 export class AddTransactionFormComponent {
+  blockchain: any = [];
   addTransactionInput!: number | '';
   transactionError = false;
   transactionErrorMessage =
     'Invalid transaction input. Please enter a number greater than 0.';
   transactionInputValid = false;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
+
+  constructor(private blockchainDataService: BlockchainDataService) {
+    
+  }
+
+  ngOnInit() {
+    this.blockchain = this.blockchainDataService.blockchain;
+  }
 
   onAddTransactionInputChange() {
     if (!this.validateTransactionInput(this.addTransactionInput)) {
@@ -40,7 +50,7 @@ export class AddTransactionFormComponent {
     console.log('this.blockchain', this.blockchain);
     this.addTransactionInput = '';
     this.transactionInputValid = false;
-    this.backToMainMenu();
+    // this.backToMainMenu();
   }
 
   getLastBlockchainValue() {
@@ -48,8 +58,15 @@ export class AddTransactionFormComponent {
     return this.blockchain[this.blockchain.length - 1];
   }
 
-  backToMainMenu() {
-    this.userChoiceInput = ''; // Schaltet zurück zu *ngSwitchDefault
-    this.setFocusToUserChoiceInputField();
+  setFocusToAddTransactionInputField() {
+    setTimeout(() => {
+      if (this.addTransactionInputField)
+        this.addTransactionInputField.nativeElement.focus();
+    });
   }
+
+  // backToMainMenu() {
+  //   this.userChoiceInput = ''; // Schaltet zurück zu *ngSwitchDefault
+  //   this.setFocusToUserChoiceInputField();
+  // }
 }

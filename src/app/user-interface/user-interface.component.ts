@@ -26,5 +26,5 @@ import { OutputBlockchainComponent } from '../output-blockchain/output-blockchai
   styleUrl: './user-interface.component.scss',
 })
 export class UserInterfaceComponent {
-  blockchain: any = [];
+  
 }
