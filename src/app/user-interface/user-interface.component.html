@@ -1,6 +1,6 @@
 <h1>Angular Blockchain</h1>
 <div [ngSwitch]="userChoiceInput">
   <app-user-choice-form  *ngSwitchDefault (userChoiceChange)="onUserChoiceChanged($event)"></app-user-choice-form>
-  <app-add-transaction-form *ngSwitchCase="'1'"></app-add-transaction-form>
+  <app-add-transaction-form *ngSwitchCase="'1'" (userChoiceChange)="onUserChoiceChanged($event)"></app-add-transaction-form>
   <app-output-blockchain *ngSwitchCase="'2'"></app-output-blockchain>
 </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlockchainDataService } from '../services/blockchain-data.service';
 
@@ -18,6 +18,7 @@ export class AddTransactionFormComponent {
     'Invalid transaction input. Please enter a number greater than 0.';
   transactionInputValid = false;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
+  @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {
     
@@ -51,6 +52,7 @@ export class AddTransactionFormComponent {
     this.addTransactionInput = '';
     this.transactionInputValid = false;
     // this.backToMainMenu();
+    this.userChoiceChange.emit('');
   }
 
   getLastBlockchainValue() {
