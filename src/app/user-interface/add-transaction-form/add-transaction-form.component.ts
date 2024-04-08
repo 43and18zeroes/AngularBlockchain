@@ -28,6 +28,10 @@ export class AddTransactionFormComponent {
     this.blockchain = this.blockchainDataService.blockchain;
   }
 
+  ngAfterViewInit() {
+    this.addTransactionInputField.nativeElement.focus();
+  }
+
   onAddTransactionInputChange() {
     if (!this.validateTransactionInput(this.addTransactionInput)) {
       this.transactionError = true;
