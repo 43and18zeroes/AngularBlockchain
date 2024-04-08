@@ -7,15 +7,13 @@ import { BlockchainDataService } from '../services/blockchain-data.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './output-blockchain.component.html',
-  styleUrl: './output-blockchain.component.scss'
+  styleUrl: './output-blockchain.component.scss',
 })
 export class OutputBlockchainComponent {
   blockchain: any = [];
   @Output() userChoiceChange = new EventEmitter<string>();
 
-  constructor(private blockchainDataService: BlockchainDataService) {
-    
-  }
+  constructor(private blockchainDataService: BlockchainDataService) {}
 
   ngOnInit() {
     this.blockchain = this.blockchainDataService.blockchain;
@@ -25,8 +23,11 @@ export class OutputBlockchainComponent {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       // this.backToMainMenu();
-      this.userChoiceChange.emit('');
+      this.returnToUserChoice();
     }
   }
-  
+
+  returnToUserChoice() {
+    this.userChoiceChange.emit('');
+  }
 }
