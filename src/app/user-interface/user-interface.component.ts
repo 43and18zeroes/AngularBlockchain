@@ -26,5 +26,5 @@ import { OutputBlockchainComponent } from './output-blockchain/output-blockchain
   styleUrl: './user-interface.component.scss',
 })
 export class UserInterfaceComponent {
-  
+  userChoiceInput: string = '';
 }
