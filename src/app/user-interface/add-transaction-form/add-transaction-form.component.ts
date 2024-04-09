@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -58,21 +57,6 @@ export class AddTransactionFormComponent {
   getLastBlockchainValue() {
     if (this.blockchain.length < 1) return [1];
     return this.blockchain[this.blockchain.length - 1];
-  }
-
-  setFocusToAddTransactionInputField() {
-    setTimeout(() => {
-      if (this.addTransactionInputField)
-        this.addTransactionInputField.nativeElement.focus();
-    });
-  }
-
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      // this.backToMainMenu();
-      this.userChoiceChange.emit('');
-    }
   }
 
   onBlurEvent() {
