@@ -38,7 +38,6 @@ export class AddTransactionFormComponent {
       this.transactionInputValid = false;
       console.log(this.transactionError);
       this.addTransactionInputField.nativeElement.focus();
-      // return;
     } else {
       this.transactionError = false;
       this.transactionInputValid = true;
@@ -55,7 +54,6 @@ export class AddTransactionFormComponent {
     console.log('this.blockchain', this.blockchain);
     this.addTransactionInput = '';
     this.transactionInputValid = false;
-    // this.backToMainMenu();
     this.userChoiceChange.emit('');
   }
 
