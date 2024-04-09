@@ -6,12 +6,12 @@
     name="addTransactionInput"
     (ngModelChange)="onAddTransactionInputChange()"
     #addTransactionInputField
-    #thisInput="ngModel"
+    #addTransactionInputFieldModel="ngModel"
     [class.is-invalid]="addTransactionFormValid"
     (blur)="onBlurEvent()"
   />
   <button [disabled]="!addTransactionFormValid">Submit</button>
-  <div *ngIf="!addTransactionFormValid && thisInput.dirty" class="error__message">
+  <div *ngIf="!addTransactionFormValid && addTransactionInputFieldModel.dirty" class="error__message">
     {{ transactionErrorMessage }}
   </div>
 </form>
