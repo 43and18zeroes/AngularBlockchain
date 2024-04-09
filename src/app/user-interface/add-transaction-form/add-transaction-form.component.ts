@@ -79,8 +79,7 @@ export class AddTransactionFormComponent {
     }
   }
 
-  // backToMainMenu() {
-  //   this.userChoiceInput = ''; // Schaltet zurück zu *ngSwitchDefault
-  //   this.setFocusToUserChoiceInputField();
-  // }
+  onBlurEvent() {
+    this.userChoiceChange.emit('');
+  }
 }
