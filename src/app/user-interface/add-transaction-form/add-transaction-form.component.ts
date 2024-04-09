@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlockchainDataService } from '../services/blockchain-data.service';
 
@@ -15,14 +22,12 @@ export class AddTransactionFormComponent {
   addTransactionInput!: number | '';
   transactionError = false;
   transactionErrorMessage =
-    'Invalid transaction input. Please enter a number greater than 0.';
+    'Invalid transaction input. Please enter a positiv or negativ number.';
   transactionInputValid = false;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
-  constructor(private blockchainDataService: BlockchainDataService) {
-    
-  }
+  constructor(private blockchainDataService: BlockchainDataService) {}
 
   ngOnInit() {
     this.blockchain = this.blockchainDataService.blockchain;
@@ -33,20 +38,31 @@ export class AddTransactionFormComponent {
   }
 
   onAddTransactionInputChange() {
-    if (!this.validateTransactionInput(this.addTransactionInput)) {
+    // if (!this.validateTransactionInput(this.addTransactionInput)) {
+    //   this.transactionError = true;
+    //   this.transactionInputValid = false;
+    //   console.log(this.transactionError);
+    //   this.addTransactionInputField.nativeElement.focus();
+    // } else {
+    //   this.transactionError = false;
+    //   this.transactionInputValid = true;
+    // }
+    if (
+      this.addTransactionInput === '' ||
+      this.addTransactionInput === null ||
+      this.addTransactionInput === 0
+    ) {
       this.transactionError = true;
       this.transactionInputValid = false;
-      console.log(this.transactionError);
-      this.addTransactionInputField.nativeElement.focus();
     } else {
       this.transactionError = false;
       this.transactionInputValid = true;
     }
   }
 
-  validateTransactionInput(input: number | ''): boolean {
-    return typeof input === 'number' && input > 0;
-  }
+  // validateTransactionInput(input: number | ''): boolean {
+  //   return typeof input === 'number' && input > 0;
+  // }
 
   addTransaction() {
     const lastBlockchainValue = this.getLastBlockchainValue();
