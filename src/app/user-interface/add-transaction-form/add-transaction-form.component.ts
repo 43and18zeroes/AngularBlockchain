@@ -34,16 +34,10 @@ export class AddTransactionFormComponent {
   }
 
   onAddTransactionInputChange() {
-    if (this.addTransactionInput !== '' ||
-      this.addTransactionInput !== null ||
-      this.addTransactionInput !== 0) {
-      this.addTransactionFormValid = true;
-    } 
-    if (this.addTransactionInput === '' ||
-    this.addTransactionInput === null ||
-    this.addTransactionInput === 0) {
-      this.addTransactionFormValid = false;
-    }
+    this.addTransactionFormValid =
+      this.addTransactionInput !== '' &&
+      this.addTransactionInput !== null &&
+      this.addTransactionInput !== 0;
   }
 
   addTransaction() {
