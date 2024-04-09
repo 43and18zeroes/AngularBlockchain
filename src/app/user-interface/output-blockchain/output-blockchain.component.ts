@@ -19,7 +19,7 @@ export class OutputBlockchainComponent {
     this.blockchain = this.blockchainDataService.blockchain;
   }
 
-  @HostListener('document:keyup', ['$event'])
+  @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       // this.backToMainMenu();

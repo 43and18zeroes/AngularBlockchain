@@ -71,7 +71,7 @@ export class AddTransactionFormComponent {
     });
   }
 
-  @HostListener('document:keyup', ['$event'])
+  @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       // this.backToMainMenu();
