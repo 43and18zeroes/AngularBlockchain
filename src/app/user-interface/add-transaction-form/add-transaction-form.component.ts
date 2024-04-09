@@ -20,12 +20,15 @@ import { BlockchainDataService } from '../services/blockchain-data.service';
 export class AddTransactionFormComponent {
   blockchain: any = [];
   addTransactionInput!: number | '';
-  transactionError = false;
   transactionErrorMessage =
     'Invalid transaction input. Please enter a positiv or negativ number.';
-  transactionInputValid = false;
   @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
+
+  // transactionError = false;
+  // transactionInputValid = false;
+
+  addTransactionFormValid = false;
 
   constructor(private blockchainDataService: BlockchainDataService) {}
 
@@ -47,16 +50,30 @@ export class AddTransactionFormComponent {
     //   this.transactionError = false;
     //   this.transactionInputValid = true;
     // }
-    if (
-      this.addTransactionInput === '' ||
-      this.addTransactionInput === null ||
-      this.addTransactionInput === 0
-    ) {
-      this.transactionError = true;
-      this.transactionInputValid = false;
-    } else {
-      this.transactionError = false;
-      this.transactionInputValid = true;
+
+
+
+    // if (
+    //   this.addTransactionInput === '' ||
+    //   this.addTransactionInput === null ||
+    //   this.addTransactionInput === 0
+    // ) {
+    //   this.addTransactionFormValid = true;
+      // this.transactionInputValid = false;
+    // } else {
+    //   this.addTransactionFormValid = false;
+      // this.transactionInputValid = true;
+    // }
+
+    if (this.addTransactionInput !== '' ||
+      this.addTransactionInput !== null ||
+      this.addTransactionInput !== 0) {
+      this.addTransactionFormValid = true;
+    } 
+    if (this.addTransactionInput === '' ||
+    this.addTransactionInput === null ||
+    this.addTransactionInput === 0) {
+      this.addTransactionFormValid = false;
     }
   }
 
@@ -69,7 +86,7 @@ export class AddTransactionFormComponent {
     this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
     console.log('this.blockchain', this.blockchain);
     this.addTransactionInput = '';
-    this.transactionInputValid = false;
+    this.addTransactionFormValid = false;
     this.userChoiceChange.emit('');
   }
 
