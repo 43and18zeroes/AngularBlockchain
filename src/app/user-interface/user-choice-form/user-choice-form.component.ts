@@ -13,8 +13,7 @@ export class UserChoiceFormComponent implements AfterViewInit {
   userChoiceInput?: string;
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   userChoiceError = false;
-  userChoiceErrorMessage = 'Invalid input. Please enter 1, 2, h, or q.';
-  validUserChoiceInputs = ['1', '2', 'h', 'q'];
+  validUserChoiceInputs = ['1', '2', 'h', 'p', 'q'];
 
   @Output() userChoiceChange = new EventEmitter<string>();
 

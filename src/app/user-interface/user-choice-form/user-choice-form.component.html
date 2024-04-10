@@ -3,6 +3,7 @@
     <p>1: Add a new transaction value</p>
     <p>2: Output the blockchain blocks</p>
     <p>h: Manipulate the chain</p>
+    <p>p: Populate blockchain</p>
     <p>q: Quit</p>
     <input
       type="text"
@@ -12,6 +13,6 @@
       #userChoiceInputField
     />
     <div *ngIf="userChoiceError" class="error__message">
-      {{ userChoiceErrorMessage }}
+      Invalid input. Please enter 1, 2, h, p, or q.
     </div>
   </form>
