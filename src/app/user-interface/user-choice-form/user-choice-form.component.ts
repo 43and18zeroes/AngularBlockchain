@@ -51,15 +51,4 @@ export class UserChoiceFormComponent implements AfterViewInit {
       this.blockchain.push([lastBlockchainValue, generatedTransaction]);
     }
   }
-
-  setFocusToUserChoiceInputField() {
-    setTimeout(() => {
-      this.userChoiceInputField.nativeElement.focus();
-    });
-  }
-
-  backToMainMenu() {
-    this.userChoiceInput = '';
-    this.setFocusToUserChoiceInputField();
-  }
 }
