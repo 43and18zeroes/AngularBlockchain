@@ -29,19 +29,16 @@ export class UserChoiceFormComponent implements AfterViewInit {
   }
 
   onUserChoiceInputChange() {
-    if (!this.validUserChoiceInputs.includes(this.userChoiceInput!)) {
-      this.userChoiceError = true;
+    switch(this.userChoiceInput) {
+      case 'p':
+        this.populateBlockchain();
+        break;
+      // Fügen Sie hier Fälle für andere Eingaben hinzu
+      default:
+        this.userChoiceChange.emit(this.userChoiceInput);
     }
-    else if (this.userChoiceInput === 'p') {
-      this.populateBlockchain();
-      this.userChoiceInputField.nativeElement.value = '';
-      return;
-    }
-    else {
-      this.userChoiceError = false;
-      this.userChoiceChange.emit(this.userChoiceInput);
-    }
-    this.userChoiceInputField.nativeElement.value = '';
+    this.userChoiceInput = ''; // Setzen Sie das Eingabefeld zurück
+    this.userChoiceError = !this.validUserChoiceInputs.includes(this.userChoiceInput);
   }
 
   populateBlockchain() {
