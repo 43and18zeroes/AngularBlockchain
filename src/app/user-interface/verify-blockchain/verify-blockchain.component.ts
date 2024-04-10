@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { BlockchainDataService } from '../services/blockchain-data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-verify-blockchain',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './verify-blockchain.component.html',
   styleUrl: './verify-blockchain.component.scss'
 })
@@ -33,7 +34,7 @@ export class VerifyBlockchainComponent implements AfterViewInit {
   }
 
   displayBlockchainAfterHack() {
-    
+
   }
 
   @HostListener('document:keydown', ['$event'])
