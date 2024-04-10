@@ -31,16 +31,17 @@ export class UserChoiceFormComponent implements AfterViewInit {
   onUserChoiceInputChange() {
     if (!this.validUserChoiceInputs.includes(this.userChoiceInput!)) {
       this.userChoiceError = true;
-      this.userChoiceInputField.nativeElement.value = '';
     }
     else if (this.userChoiceInput === 'p') {
       this.populateBlockchain();
+      this.userChoiceInputField.nativeElement.value = '';
       return;
     }
     else {
       this.userChoiceError = false;
       this.userChoiceChange.emit(this.userChoiceInput);
     }
+    this.userChoiceInputField.nativeElement.value = '';
   }
 
   populateBlockchain() {
