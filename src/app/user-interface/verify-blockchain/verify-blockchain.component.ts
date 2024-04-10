@@ -19,7 +19,6 @@ export class VerifyBlockchainComponent implements AfterViewInit {
 
   ngOnInit() {
     this.blockchain = this.blockchainDataService.blockchain;
-    this.blockchainBeforeHack = [...this.blockchain];
   }
 
   ngAfterViewInit(): void {
@@ -27,17 +26,9 @@ export class VerifyBlockchainComponent implements AfterViewInit {
   }
 
   hackBlockchain() {
-    // this.displayBlockchainBeforeHack();
+    this.blockchainBeforeHack = [...this.blockchain];
     this.blockchain[0] = [2];
-    this.displayBlockchainAfterHack();
-  }
-
-  // displayBlockchainBeforeHack() {
-  //   this.blockchainBeforeHack = this.blockchain;
-  // }
-
-  displayBlockchainAfterHack() {
-    this.blockchainAfterHack = this.blockchain;
+    this.blockchainAfterHack = [...this.blockchain];
   }
 
   @HostListener('document:keydown', ['$event'])
