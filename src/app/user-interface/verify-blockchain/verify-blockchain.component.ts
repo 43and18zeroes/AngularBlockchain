@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Component({
   selector: 'app-verify-blockchain',
@@ -9,4 +9,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class VerifyBlockchainComponent {
   @Output() userChoiceChange = new EventEmitter<string>();
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.returnToUserChoice();
+    }
+  }
+
+  returnToUserChoice() {
+    this.userChoiceChange.emit('');
+  }
 }

@@ -22,7 +22,6 @@ export class OutputBlockchainComponent {
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      // this.backToMainMenu();
       this.returnToUserChoice();
     }
   }
