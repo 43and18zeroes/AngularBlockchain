@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserChoiceFormComponent } from './user-choice-form/user-choice-form.component';
 import { AddTransactionFormComponent } from './add-transaction-form/add-transaction-form.component';
 import { OutputBlockchainComponent } from './output-blockchain/output-blockchain.component';
+import { VerifyBlockchainComponent } from './verify-blockchain/verify-blockchain.component';
 
 @Component({
   selector: 'app-user-interface',
@@ -15,6 +16,7 @@ import { OutputBlockchainComponent } from './output-blockchain/output-blockchain
     UserChoiceFormComponent,
     AddTransactionFormComponent,
     OutputBlockchainComponent,
+    VerifyBlockchainComponent
   ],
   templateUrl: './user-interface.component.html',
   styleUrl: './user-interface.component.scss',
