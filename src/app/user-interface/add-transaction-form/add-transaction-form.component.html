@@ -11,7 +11,10 @@
     (blur)="onBlurEvent()"
   />
   <button [disabled]="!addTransactionFormValid">Submit</button>
-  <div *ngIf="!addTransactionFormValid && addTransactionInputFieldModel.dirty" class="error__message">
+  <div
+    *ngIf="!addTransactionFormValid && addTransactionInputFieldModel.dirty"
+    class="error__message"
+  >
     Invalid transaction input. Please enter a positiv or negativ number.
   </div>
 </form>
