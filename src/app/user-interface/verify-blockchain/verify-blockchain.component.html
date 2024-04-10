@@ -1,5 +1,11 @@
-<div *ngFor="let block of blockchain; let i = index">
-    <h3>Outputting Block {{ i + 1 }}</h3>
-    <p>{{ block | json }}</p>
-  </div>
+<h2>Blockchain Before Hack</h2>
+<div *ngFor="let block of blockchainBeforeHack; let i = index">
+  <h3>Outputting Block {{ i + 1 }}</h3>
+  <p>{{ block | json }}</p>
+</div>
+<h2>Blockchain After Hack</h2>
+<div *ngFor="let block of blockchainAfterHack; let i = index">
+  <h3>Outputting Block {{ i + 1 }}</h3>
+  <p>{{ block | json }}</p>
+</div>
 <button (click)="returnToUserChoice()">Back to Main Menu (Esc)</button>

@@ -11,12 +11,15 @@ import { CommonModule } from '@angular/common';
 })
 export class VerifyBlockchainComponent implements AfterViewInit {
   blockchain: any = [];
+  blockchainBeforeHack: any = [];
+  blockchainAfterHack: any = [];
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
 
   ngOnInit() {
     this.blockchain = this.blockchainDataService.blockchain;
+    this.blockchainBeforeHack = [...this.blockchain];
   }
 
   ngAfterViewInit(): void {
@@ -24,17 +27,17 @@ export class VerifyBlockchainComponent implements AfterViewInit {
   }
 
   hackBlockchain() {
-    this.displayBlockchainBeforeHack();
+    // this.displayBlockchainBeforeHack();
     this.blockchain[0] = [2];
     this.displayBlockchainAfterHack();
   }
 
-  displayBlockchainBeforeHack() {
-
-  }
+  // displayBlockchainBeforeHack() {
+  //   this.blockchainBeforeHack = this.blockchain;
+  // }
 
   displayBlockchainAfterHack() {
-
+    this.blockchainAfterHack = this.blockchain;
   }
 
   @HostListener('document:keydown', ['$event'])
