@@ -42,7 +42,7 @@ export class UserChoiceFormComponent implements AfterViewInit {
   }
 
   populateBlockchain() {
-    if (this.blockchain < 1) {
+    if (this.blockchain.length < 1) {
       for (let generatedTransaction = 5; generatedTransaction < 25; generatedTransaction += 5) {
         let lastBlockchainValue;
         if (this.blockchain.length < 1) lastBlockchainValue = [1];
