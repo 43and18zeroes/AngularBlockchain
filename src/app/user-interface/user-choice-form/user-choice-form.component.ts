@@ -42,11 +42,13 @@ export class UserChoiceFormComponent implements AfterViewInit {
   }
 
   populateBlockchain() {
-    for (let generatedTransaction = 5; generatedTransaction < 25; generatedTransaction += 5) {
-      let lastBlockchainValue;
-      if (this.blockchain.length < 1) lastBlockchainValue = [1];
-      else lastBlockchainValue = this.blockchain[this.blockchain.length - 1];
-      this.blockchain.push([lastBlockchainValue, generatedTransaction]);
+    if (this.blockchain < 1) {
+      for (let generatedTransaction = 5; generatedTransaction < 25; generatedTransaction += 5) {
+        let lastBlockchainValue;
+        if (this.blockchain.length < 1) lastBlockchainValue = [1];
+        else lastBlockchainValue = this.blockchain[this.blockchain.length - 1];
+        this.blockchain.push([lastBlockchainValue, generatedTransaction]);
+      }
     }
   }
 }
