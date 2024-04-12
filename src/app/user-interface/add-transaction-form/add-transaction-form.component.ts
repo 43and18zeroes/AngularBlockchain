@@ -30,7 +30,9 @@ export class AddTransactionFormComponent {
   }
 
   ngAfterViewInit() {
-    this.addTransactionInputField.nativeElement.focus();
+    setTimeout(() => {
+      this.addTransactionInputField.nativeElement.focus();
+    }, 200);
   }
 
   onAddTransactionInputChange() {
