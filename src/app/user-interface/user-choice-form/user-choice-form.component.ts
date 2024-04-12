@@ -34,38 +34,29 @@ export class UserChoiceFormComponent {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    switch(event.key) {
+    switch (event.key) {
       case '1':
       case '!':
-        this.onAddNewTransaction();
+        this.onUserChoice('onAddNewTransaction');
+        break;
+      case '2':
+      case '"':
+        this.onUserChoice('onOutputBlockchainBlocks');
+        break;
+      case 'h':
+      case 'H':
+        this.onUserChoice('onManipulateTheChain');
+        break;
+      case 'p':
+      case 'P':
+        this.populateBlockchain();
         break;
     }
   }
 
-  onAddNewTransaction() {
-    this.userChoiceChange.emit('1');
+  onUserChoice(choice: string) {
+    this.userChoiceChange.emit(choice);
   }
-
-  onOutputBlockchainBlocks() {
-    this.userChoiceChange.emit('2');
-  }
-
-  onManipulateTheChain() {
-    this.userChoiceChange.emit('h');
-  }
-
-  // onUserChoiceInputChange() {
-  //   switch(this.userChoiceInput) {
-  //     case 'p':
-  //       this.populateBlockchain();
-  //       break;
-  //     // Fügen Sie hier Fälle für andere Eingaben hinzu
-  //     default:
-  //       this.userChoiceChange.emit(this.userChoiceInput);
-  //   }
-  //   this.userChoiceInput = ''; // Setzen Sie das Eingabefeld zurück
-  //   this.userChoiceError = !this.validUserChoiceInputs.includes(this.userChoiceInput);
-  // }
 
   populateBlockchain() {
     if (this.blockchain.length < 1) {
