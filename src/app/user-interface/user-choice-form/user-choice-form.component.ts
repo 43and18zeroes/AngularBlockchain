@@ -10,11 +10,11 @@ import { BlockchainDataService } from '../services/blockchain-data.service';
   templateUrl: './user-choice-form.component.html',
   styleUrl: './user-choice-form.component.scss'
 })
-export class UserChoiceFormComponent implements AfterViewInit {
+export class UserChoiceFormComponent {
   blockchain: any = [];
   userChoiceInput?: string;
   userChoiceError = false;
-  validUserChoiceInputs = ['1', '2', 'h', 'p', 'q'];
+  validUserChoiceInputs = ['1', '2', 'h', 'p'];
   @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
@@ -24,22 +24,34 @@ export class UserChoiceFormComponent implements AfterViewInit {
     this.blockchain = this.blockchainDataService.blockchain;
   }
 
-  ngAfterViewInit() {
-    this.userChoiceInputField.nativeElement.focus();
+  // ngAfterViewInit() {
+  //   this.userChoiceInputField.nativeElement.focus();
+  // }
+
+  onAddNewTransaction() {
+    this.userChoiceChange.emit('1');
   }
 
-  onUserChoiceInputChange() {
-    switch(this.userChoiceInput) {
-      case 'p':
-        this.populateBlockchain();
-        break;
-      // Fügen Sie hier Fälle für andere Eingaben hinzu
-      default:
-        this.userChoiceChange.emit(this.userChoiceInput);
-    }
-    this.userChoiceInput = ''; // Setzen Sie das Eingabefeld zurück
-    this.userChoiceError = !this.validUserChoiceInputs.includes(this.userChoiceInput);
+  onOutputBlockchainBlocks() {
+    this.userChoiceChange.emit('2');
   }
+
+  onManipulateTheChain() {
+    this.userChoiceChange.emit('h');
+  }
+
+  // onUserChoiceInputChange() {
+  //   switch(this.userChoiceInput) {
+  //     case 'p':
+  //       this.populateBlockchain();
+  //       break;
+  //     // Fügen Sie hier Fälle für andere Eingaben hinzu
+  //     default:
+  //       this.userChoiceChange.emit(this.userChoiceInput);
+  //   }
+  //   this.userChoiceInput = ''; // Setzen Sie das Eingabefeld zurück
+  //   this.userChoiceError = !this.validUserChoiceInputs.includes(this.userChoiceInput);
+  // }
 
   populateBlockchain() {
     if (this.blockchain.length < 1) {

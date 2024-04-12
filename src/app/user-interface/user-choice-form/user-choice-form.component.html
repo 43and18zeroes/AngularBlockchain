@@ -1,18 +1,21 @@
 <form id="userChoiceForm">
-  <h2>Please choose</h2>
-  <p>1: Add a new transaction value</p>
-  <p>2: Output the blockchain blocks</p>
-  <p>h: Manipulate the chain</p>
-  <p>p: Populate blockchain</p>
-  <p>q: Quit</p>
-  <input
+  <!-- <h2>Please choose</h2> -->
+  <!-- <p>1: Add a new transaction value</p> -->
+  <button (click)="onAddNewTransaction()">1: Add a new transaction value</button>
+  <!-- <p>2: Output the blockchain blocks</p> -->
+  <button (click)="onOutputBlockchainBlocks()">2: Output the blockchain blocks</button>
+  <!-- <p>h: Manipulate the chain</p> -->
+  <button (click)="onManipulateTheChain()">h: Manipulate the chain</button>
+  <!-- <p>p: Populate blockchain</p> -->
+  <button (click)="populateBlockchain()">p: Populate blockchain</button>
+  <!-- <input
     type="text"
     [(ngModel)]="userChoiceInput"
     name="userChoiceInput"
     (ngModelChange)="onUserChoiceInputChange()"
     #userChoiceInputField
-  />
-  <div *ngIf="userChoiceError" class="error__message">
+  /> -->
+  <!-- <div *ngIf="userChoiceError" class="error__message">
     Invalid input. Please enter 1, 2, h, p, or q.
-  </div>
+  </div> -->
 </form>
