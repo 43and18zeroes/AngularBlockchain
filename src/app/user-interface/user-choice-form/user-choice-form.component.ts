@@ -1,17 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlockchainDataService } from '../services/blockchain-data.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-choice-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatButtonModule],
   templateUrl: './user-choice-form.component.html',
   styleUrl: './user-choice-form.component.scss',
 })

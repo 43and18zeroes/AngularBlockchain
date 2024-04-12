@@ -1,10 +1,12 @@
-<button (click)="onUserChoice('selectAddNewTransaction')">
-  1: Add a new transaction value
-</button>
-<button (click)="onUserChoice('selectOutputBlockchainBlocks')">
-  2: Output the blockchain blocks
-</button>
-<button (click)="onUserChoice('selectManipulateTheChain')">
-  h: Manipulate the chain
-</button>
-<button (click)="populateBlockchain()">p: Populate blockchain</button>
+<div class="btn__container">
+  <button mat-raised-button color="primary" (click)="onUserChoice('selectAddNewTransaction')">
+    1: Add a new transaction value
+  </button>
+  <button mat-raised-button color="primary" (click)="onUserChoice('selectOutputBlockchainBlocks')">
+    2: Output the blockchain blocks
+  </button>
+  <button mat-raised-button color="primary" (click)="onUserChoice('selectManipulateTheChain')">
+    h: Manipulate the chain
+  </button>
+  <button mat-raised-button color="primary" (click)="populateBlockchain()">p: Populate blockchain</button>
+</div>

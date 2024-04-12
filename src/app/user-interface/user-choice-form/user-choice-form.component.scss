@@ -1,4 +1,10 @@
-button {
-    display: block;
-    margin-bottom: 16px;
+.btn__container {
+    width: 270px;
+
+    button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 16px;
+    }
 }
