@@ -34,9 +34,11 @@ export class UserChoiceFormComponent {
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(event.key);
-    if (event.key == '1' || event.key === '!') {
-      this.onAddNewTransaction();
+    switch(event.key) {
+      case '1':
+      case '!':
+        this.onAddNewTransaction();
+        break;
     }
   }
 
