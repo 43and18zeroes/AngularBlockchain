@@ -1,20 +1,24 @@
 <form id="addTransactionForm" (ngSubmit)="addTransaction()">
   <h2>Your transaction amount please:</h2>
-  <input
-    type="number"
-    [(ngModel)]="addTransactionInput"
-    name="addTransactionInput"
-    (ngModelChange)="onAddTransactionInputChange()"
-    #addTransactionInputField
-    #addTransactionInputFieldModel="ngModel"
-    [class.is-invalid]="addTransactionFormValid"
-    (blur)="onBlurEvent()"
-  />
-  <button [disabled]="!addTransactionFormValid">Submit</button>
-  <div
-    *ngIf="!addTransactionFormValid && addTransactionInputFieldModel.dirty"
-    class="error__message"
+  <mat-form-field appearance="fill">
+    <mat-label>Transaction Amount</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="addTransactionInput"
+      name="addTransactionInput"
+      (ngModelChange)="onAddTransactionInputChange()"
+      [class.is-invalid]="!addTransactionFormValid"
+      #addTransactionInputFieldModel="ngModel"
+      (blur)="onBlurEvent()"
+      required
+    />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!addTransactionFormValid"
   >
-    Invalid transaction input. Please enter a positiv or negativ number.
-  </div>
+    Submit
+  </button>
 </form>
