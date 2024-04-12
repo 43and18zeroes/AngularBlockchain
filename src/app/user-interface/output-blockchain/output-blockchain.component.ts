@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { BlockchainDataService } from '../services/blockchain-data.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-output-blockchain',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatCardModule],
   templateUrl: './output-blockchain.component.html',
   styleUrl: './output-blockchain.component.scss',
 })
