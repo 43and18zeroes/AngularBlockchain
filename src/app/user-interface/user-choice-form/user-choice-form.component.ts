@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
   EventEmitter,
   HostListener,
-  Output,
-  ViewChild,
+  Output
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlockchainDataService } from '../services/blockchain-data.service';
@@ -20,10 +17,6 @@ import { BlockchainDataService } from '../services/blockchain-data.service';
 })
 export class UserChoiceFormComponent {
   blockchain: any = [];
-  userChoiceInput?: string;
-  userChoiceError = false;
-  validUserChoiceInputs = ['1', '2', 'h', 'p'];
-  @ViewChild('userChoiceInputField') userChoiceInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
