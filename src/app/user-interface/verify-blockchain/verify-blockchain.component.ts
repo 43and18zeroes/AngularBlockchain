@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, EventEmitter, HostListener, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  HostListener,
+  Output,
+} from '@angular/core';
 import { BlockchainDataService } from '../services/blockchain-data.service';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +13,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './verify-blockchain.component.html',
-  styleUrl: './verify-blockchain.component.scss'
+  styleUrl: './verify-blockchain.component.scss',
 })
 export class VerifyBlockchainComponent implements AfterViewInit {
   blockchain: any = [];
@@ -22,7 +28,9 @@ export class VerifyBlockchainComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.hackBlockchain();
+    setTimeout(() => {
+      this.hackBlockchain();
+    });
   }
 
   hackBlockchain() {
