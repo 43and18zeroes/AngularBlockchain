@@ -30,15 +30,15 @@ export class UserChoiceFormComponent {
     switch (event.key) {
       case '1':
       case '!':
-        this.onUserChoice('onAddNewTransaction');
+        this.onUserChoice('selectAddNewTransaction');
         break;
       case '2':
       case '"':
-        this.onUserChoice('onOutputBlockchainBlocks');
+        this.onUserChoice('selectOutputBlockchainBlocks');
         break;
       case 'h':
       case 'H':
-        this.onUserChoice('onManipulateTheChain');
+        this.onUserChoice('selectManipulateTheChain');
         break;
       case 'p':
       case 'P':
