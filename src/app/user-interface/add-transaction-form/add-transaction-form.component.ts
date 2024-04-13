@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  HostListener,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -23,7 +24,7 @@ export class AddTransactionFormComponent {
   blockchain: any = [];
   addTransactionInput!: number | '';
   addTransactionFormValid = false;
-  @ViewChild('addTransactionInputField') addTransactionInputField!: ElementRef;
+  @ViewChild('addTransactionInputFieldModel') addTransactionInputFieldModel!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
@@ -32,11 +33,12 @@ export class AddTransactionFormComponent {
     this.blockchain = this.blockchainDataService.blockchain;
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.addTransactionInputField.nativeElement.focus();
-    }, 200);
-  }
+  // ngAfterViewInit() {
+  //   setTimeout(() => {
+  //   console.log(this.addTransactionInputFieldModel);
+  //     this.addTransactionInputFieldModel.nativeElement.focus();
+  //   }, 200);
+  // }
 
   onAddTransactionInputChange() {
     this.addTransactionFormValid =
@@ -58,7 +60,14 @@ export class AddTransactionFormComponent {
     return this.blockchain[this.blockchain.length - 1];
   }
 
-  onBlurEvent() {
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.returnToUserChoice();
+    }
+  }
+
+  returnToUserChoice() {
     this.userChoiceChange.emit('');
   }
 }

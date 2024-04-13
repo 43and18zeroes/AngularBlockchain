@@ -10,7 +10,7 @@
       (ngModelChange)="onAddTransactionInputChange()"
       [class.is-invalid]="!addTransactionFormValid"
       #addTransactionInputFieldModel="ngModel"
-      (blur)="onBlurEvent()"
+      (blur)="returnToUserChoice()"
       required
     />
   </mat-form-field>
