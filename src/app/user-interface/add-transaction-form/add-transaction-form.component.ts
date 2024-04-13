@@ -25,6 +25,7 @@ export class AddTransactionFormComponent {
   addTransactionInput!: number | '';
   addTransactionFormValid = false;
   @ViewChild('addTransactionInputFieldModel') addTransactionInputFieldModel!: ElementRef;
+  @ViewChild('addTransactionInputField', { static: false }) addTransactionInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
@@ -33,12 +34,12 @@ export class AddTransactionFormComponent {
     this.blockchain = this.blockchainDataService.blockchain;
   }
 
-  // ngAfterViewInit() {
-  //   setTimeout(() => {
-  //   console.log(this.addTransactionInputFieldModel);
-  //     this.addTransactionInputFieldModel.nativeElement.focus();
-  //   }, 200);
-  // }
+  ngAfterViewInit() {
+    setTimeout(() => {
+    console.log(this.addTransactionInputFieldModel);
+      this.addTransactionInputField.nativeElement.focus();
+    }, 200);
+  }
 
   onAddTransactionInputChange() {
     this.addTransactionFormValid =
