@@ -1,11 +1,18 @@
 <h2>Blockchain Before Hack</h2>
-<div *ngFor="let block of blockchainBeforeHack; let i = index">
-  <h3>Outputting Block {{ i + 1 }}</h3>
-  <p>{{ block | json }}</p>
-</div>
+<mat-card *ngFor="let block of blockchainBeforeHack; let i = index">
+  <mat-card-header>
+    <mat-card-title> Outputting Block {{ i + 1 }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    {{ block | json }}
+  </mat-card-content>
+</mat-card>
 <h2>Blockchain After Hack</h2>
-<div *ngFor="let block of blockchainAfterHack; let i = index">
-  <h3>Outputting Block {{ i + 1 }}</h3>
-  <p>{{ block | json }}</p>
-</div>
-<button (click)="returnToUserChoice()">Back to Main Menu (Esc)</button>
+<mat-card *ngFor="let block of blockchainAfterHack; let i = index">
+  <mat-card-header>
+    <mat-card-title> Outputting Block {{ i + 1 }} </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    {{ block | json }}
+  </mat-card-content>
+</mat-card>

@@ -7,11 +7,12 @@ import {
 } from '@angular/core';
 import { BlockchainDataService } from '../services/blockchain-data.service';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-verify-blockchain',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardModule],
   templateUrl: './verify-blockchain.component.html',
   styleUrl: './verify-blockchain.component.scss',
 })
