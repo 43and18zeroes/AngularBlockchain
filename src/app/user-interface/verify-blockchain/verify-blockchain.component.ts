@@ -31,6 +31,7 @@ export class VerifyBlockchainComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.hackBlockchain();
+      this.verifyBlockchain();
     });
   }
 
@@ -38,6 +39,24 @@ export class VerifyBlockchainComponent implements AfterViewInit {
     this.blockchainBeforeHack = [...this.blockchain];
     this.blockchain[0] = [2];
     this.blockchainAfterHack = [...this.blockchain];
+  }
+
+  verifyBlockchain() {
+    for (let blogIndex = 0; blogIndex < this.blockchain.length; blogIndex++) {
+      console.log(blogIndex);
+      console.log(this.blockchain[blogIndex][0]);
+      console.log(this.blockchain[blogIndex - 1]);
+
+      if (blogIndex === 0) {
+        continue;
+      } else if (
+        this.blockchain[blogIndex][0] == this.blockchain[blogIndex - 1]
+      ) {
+        console.log('Blockchain valid');
+      } else {
+        console.log('Blockchain invalid / hacked');
+      }
+    }
   }
 
   @HostListener('document:keydown', ['$event'])
