@@ -63,25 +63,6 @@ export class VerifyBlockchainComponent implements AfterViewInit {
     return this.blockchain[index][0] === this.blockchain[index - 1];
   }
 
-  // verifyBlockchain() {
-  //   for (let blogIndex = 0; blogIndex < this.blockchain.length; blogIndex++) {
-  //     console.log(blogIndex);
-  //     console.log(this.blockchain[blogIndex][0]);
-  //     console.log(this.blockchain[blogIndex - 1]);
-
-  //     if (blogIndex === 0) {
-  //       continue;
-  //     } else if (
-  //       this.blockchain[blogIndex][0] == this.blockchain[blogIndex - 1]
-  //     ) {
-  //       console.log('Blockchain valid');
-  //     } else {
-  //       console.log('Blockchain invalid / hacked');
-  //       break;
-  //     }
-  //   }
-  // }
-
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
