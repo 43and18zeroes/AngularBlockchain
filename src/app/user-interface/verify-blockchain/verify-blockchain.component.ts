@@ -55,6 +55,7 @@ export class VerifyBlockchainComponent implements AfterViewInit {
         console.log('Blockchain valid');
       } else {
         console.log('Blockchain invalid / hacked');
+        break;
       }
     }
   }
