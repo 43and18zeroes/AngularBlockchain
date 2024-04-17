@@ -30,8 +30,8 @@ export class VerifyBlockchainComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.verifyBlockchain();
       this.hackBlockchain();
+      this.verifyBlockchain();
     });
   }
 
