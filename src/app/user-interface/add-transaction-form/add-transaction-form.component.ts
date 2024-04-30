@@ -36,6 +36,8 @@ export class AddTransactionFormComponent {
   addTransactionInputFieldModel!: ElementRef;
   @ViewChild('addTransactionInputField', { static: false })
   addTransactionInputField!: ElementRef;
+  @ViewChild('addTransactionRecipientInputField', { static: false })
+  addTransactionRecipientInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
@@ -46,8 +48,7 @@ export class AddTransactionFormComponent {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      console.log(this.addTransactionInputFieldModel);
-      this.addTransactionInputField.nativeElement.focus();
+      this.addTransactionRecipientInputField.nativeElement.focus();
     }, 200);
   }
 
