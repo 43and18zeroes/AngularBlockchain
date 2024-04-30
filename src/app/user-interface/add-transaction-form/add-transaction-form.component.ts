@@ -9,23 +9,33 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BlockchainDataService } from '../services/blockchain-data.service';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-transaction-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './add-transaction-form.component.html',
   styleUrl: './add-transaction-form.component.scss',
 })
 export class AddTransactionFormComponent {
   blockchain: any = [];
+  sender = 'Max';
   addTransactionInput!: number | '';
+  addTransactionRecipient!: number | '';
   addTransactionFormValid = false;
-  @ViewChild('addTransactionInputFieldModel') addTransactionInputFieldModel!: ElementRef;
-  @ViewChild('addTransactionInputField', { static: false }) addTransactionInputField!: ElementRef;
+  @ViewChild('addTransactionInputFieldModel')
+  addTransactionInputFieldModel!: ElementRef;
+  @ViewChild('addTransactionInputField', { static: false })
+  addTransactionInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
@@ -36,7 +46,7 @@ export class AddTransactionFormComponent {
 
   ngAfterViewInit() {
     setTimeout(() => {
-    console.log(this.addTransactionInputFieldModel);
+      console.log(this.addTransactionInputFieldModel);
       this.addTransactionInputField.nativeElement.focus();
     }, 200);
   }
@@ -48,9 +58,24 @@ export class AddTransactionFormComponent {
       this.addTransactionInput !== 0;
   }
 
+  // addTransaction() {
+  //   const lastBlockchainValue = this.getLastBlockchainValue();
+  //   this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
+  //   this.addTransactionInput = '';
+  //   this.addTransactionFormValid = false;
+  //   this.userChoiceChange.emit('');
+  // }
+
   addTransaction() {
-    const lastBlockchainValue = this.getLastBlockchainValue();
-    this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
+    console.log('this.addTransactionRecipient', this.addTransactionRecipient);
+    const transaction = {
+      sender: this.sender,
+      recipient: this.addTransactionRecipient,
+      amount: this.addTransactionInput,
+    };
+    this.blockchain.push(transaction);
+    // const lastBlockchainValue = this.getLastBlockchainValue();
+    // this.blockchain.push([lastBlockchainValue, this.addTransactionInput]);
     this.addTransactionInput = '';
     this.addTransactionFormValid = false;
     this.userChoiceChange.emit('');

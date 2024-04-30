@@ -1,6 +1,15 @@
 <form id="addTransactionForm" (ngSubmit)="addTransaction()">
   <h2>Your transaction amount please:</h2>
   <mat-form-field appearance="fill">
+    <mat-label>Transaction Recipient</mat-label>
+    <input
+    matInput
+    type="text"
+    [(ngModel)]="addTransactionRecipient"
+    name="addTransactionRecipient"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Transaction Amount</mat-label>
     <input
       #addTransactionInputField
@@ -11,7 +20,6 @@
       (ngModelChange)="onAddTransactionInputChange()"
       [class.is-invalid]="!addTransactionFormValid"
       #addTransactionInputFieldModel="ngModel"
-      (blur)="returnToUserChoice()"
       required
     />
   </mat-form-field>
