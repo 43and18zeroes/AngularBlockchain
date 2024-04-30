@@ -30,14 +30,14 @@ export class AddTransactionFormComponent {
   blockchain: any = [];
   sender = 'Max';
   addTransactionInput!: number | '';
-  addTransactionRecipient!: number | '';
+  transactionRecipient!: number | '';
   addTransactionFormValid = false;
   @ViewChild('addTransactionInputFieldModel')
   addTransactionInputFieldModel!: ElementRef;
   @ViewChild('addTransactionInputField', { static: false })
   addTransactionInputField!: ElementRef;
-  @ViewChild('addTransactionRecipientInputField', { static: false })
-  addTransactionRecipientInputField!: ElementRef;
+  @ViewChild('transactionRecipientInputField', { static: false })
+  transactionRecipientInputField!: ElementRef;
   @Output() userChoiceChange = new EventEmitter<string>();
 
   constructor(private blockchainDataService: BlockchainDataService) {}
@@ -48,7 +48,7 @@ export class AddTransactionFormComponent {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.addTransactionRecipientInputField.nativeElement.focus();
+      this.transactionRecipientInputField.nativeElement.focus();
     }, 200);
   }
 
@@ -68,10 +68,9 @@ export class AddTransactionFormComponent {
   // }
 
   addTransaction() {
-    console.log('this.addTransactionRecipient', this.addTransactionRecipient);
     const transaction = {
       sender: this.sender,
-      recipient: this.addTransactionRecipient,
+      recipient: this.transactionRecipient,
       amount: this.addTransactionInput,
     };
     this.blockchain.push(transaction);
